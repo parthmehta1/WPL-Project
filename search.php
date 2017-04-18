@@ -11,13 +11,14 @@
 <link rel="stylesheet" href="style.css">
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
-body  {
+body {
     background-image: url("mycart.jpg");
     color: black;
     background-size: 100%;
     background-repeat: no-repeat;
     margin-top: 100px
 }
+
 .cartBtn{
 	border:none;
 	display:inline-block;
@@ -30,10 +31,11 @@ body  {
 	background-color:#0e65f2;
 	text-align:center;
 	cursor:pointer;
-	white-space:nowrap
+	white-space:nowrap;
 	text-align:center;
 	color: white
 }
+
 </style>
 <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;font-size:20px;" id="home">
 

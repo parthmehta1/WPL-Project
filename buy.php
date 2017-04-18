@@ -14,37 +14,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!--<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
-	<script type="text/javascript">
-	$(document).ready(function(){
-		$("#searchButton").click(function(e){
-			e.preventDefault();
-			//var inputZip = $("#selectZip").val();
-			var inputPrice = $("#selectPrice").val();
-			var inputBeds = $("#selectBeds").val();
-			var inputBaths = $("#selectBaths").val();
-			$.ajax({
-			
-		url:"search.php",
-		type: "POST",
-		cache: false,
-		dataType: 'json',
-		data : {'inputPrice':inputPrice, 'inputBeds':inputBeds, 'inputBaths': inputBaths},
-		success: function(data){
-		
-
-					$(".resultDiv").text("The data according to the values selected is:");
-					$(".resultDiv").append("<br><br>");
-					$(".resultDiv").append(data);
-		}
-		
-		});	
-	});
-	});
-
-	</script>
-	!-->
 <body>
 <div class="w3-top">
   <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
