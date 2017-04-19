@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<title>Online Realtor.</title>
+
+<head>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="js/jquery-1.9.1.min.js"></script>
+</head>
+<body style="text-align:center" onload = "checkSession()">
+
+<h2>Popup</h2>
+
+<A HREF="/login.html" onClick="return popup(this, 'Sign In')">Sign In/ Sign Up</A>
+
+
+<script>
+// When the user clicks on div, open the popup
+function popup(mylink, windowname) { 
+    if (! window.focus)return true; 
+    var href; 
+    href=mylink.href; 
+    window.open(href, windowname, 'width=500,height=400, top=50, left=200 ,scrollbars=yes');
+    return false; 
+}
+
+function checkSession(){
+  $.ajax({
+     type: "GET",
+     url: 'sessionManager.php',
+     data: {a: "logIn"},
+    success: function(msg) {
+      if(msg !="no")
+      window.location.href = msg;
+    }
+});
+}
+
+</script>
+
+</body>
+</html>

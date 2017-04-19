@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+
+<title>Online Realtor.</title>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+
+<body onload = "openTab(event, 'signin')">
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'signin')">Sign In</button>
+  <button class="tablinks" onclick="openTab(event, 'signup')">Sign Up</button>
+</div>
+
+<div id="signin" class="tabcontent">
+  <h3>Sign In</h3>
+  <form action="login.php" method = "post">
+		User name:<br>
+		<input type="text" name="username" id = "username"  >
+		<br>
+		Password:<br>
+		<input type="password" name="password" id = "password">
+		<br>
+	    <br>
+
+		<input type="submit">
+	</form>
+</div>
+
+<div id="signup" class="tabcontent">
+  <h3>Sign Up</h3>
+ <form action="signup.php" method = "post">
+		
+			<table>
+			<tr><td>Email</td><td>:</td><td><input type="text" name="username" id = "email"></td></tr>
+			<tr><td>Password</td><td>:</td><td><input type="password" name="password1" id = "password1"></td></tr>
+			<tr><td>Retype Password</td><td>:</td><td><input type="password" name="password2" id = "password2"></td></tr>
+			<tr><td>Name</td><td>:</td><td><input type="text" name="firstname" id = "fname" placeholder = "First Name"></td></tr>
+				<tr><td></td><td></td><td><input type="text" name="lastname" id = "lname" placeholder = "Last Name"></td></tr>
+			</table>
+
+			<br>
+			<input type="submit" value = "Create Account">
+
+
+		</form>
+</div>
+	
+</body>
+
+<script type="text/javascript">
+
+function openTab(evt, name) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(name).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+  window.onunload = refreshParent;
+    function refreshParent() {
+        window.opener.location.reload();
+    }
+
+</script>
+</html>
