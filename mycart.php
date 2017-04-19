@@ -8,12 +8,13 @@
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
+
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 body  {
 	margin-top: 100px;
-    background-image: url("mycart.jpg");
+    background-image: url("image/mycart.jpg");
     color: black;
     background-size: 100%;
 }
@@ -53,7 +54,7 @@ body  {
 	color:white
 
 }
-</style>
+</style>	
 <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;font-size:20px;" id="home">
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -117,8 +118,8 @@ session_start();
 		while($row = mysqli_fetch_assoc($result)) 
 		{	
 			
-			echo "<tr style='color:white';><td style = 'padding:5px'><img src = "
-			.$row["image"]." width = '200' height = '200'><br></td><td style = 'padding:25px'> 	 Beds: "
+			echo "<tr style='color:white';><td style = 'padding:5px'><img src = 'image/"
+			.$row["image"]."' width = '200' height = '200'><br></td><td style = 'padding:25px'> 	 Beds: "
 			.$row["bed"]."bed</td><br><td style = 'padding:25px'>Baths : "
 			.$row["bath"]."bath</td><br><td style = 'padding:25px'>Square Feet: "
 			.$row["sqfeet"]." sq. feet</td><br><td style = 'padding:25px'>Price: $"

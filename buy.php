@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
@@ -24,29 +24,34 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     <a href="sell.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Sell</a>
     <a href="rent.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Rent</a>
     <a href="news.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">News & Advice</a>
-    <a href="mycart.php" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white w3-right">Shopping Cart</a>
     <a href="logout.php" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white w3-right">Logout</a>
+    <a href="mycart.php" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white w3-right">Shopping Cart</a>
+    
+	 <?php session_start() ; 
+     if($_SESSION['isAdmin']){
+      echo "<a href='admin.php' class='w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white w3-right'>Admin Actions</a>";
+     }?>
   </div>
 </div>
 <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
-  <img class="w3-image" src="background-buy.jpg" alt="Architecture" width="1500" height="800">
+  <img class="w3-image" src="image/background-buy.jpg" alt="Architecture" width="1500" height="800">
   <div class = "text_center_search">
 
   <form action = 'search.php' method = 'post'>
-	<!--<input type="text" name="search" placeholder="Enter Zip..">!-->
+	<input type="text" name="search" placeholder="Search House">
 	<br><br>
 	<select name = "selectPrice">
 		<option value = "defaultPrice">Any Price</option>
 		<option value = "0">$0</option>
-		<option value = "100k">$100k</option>
-		<option value = "200k">$200k</option>
-		<option value = "300k">$300k</option>
-		<option value = "400k">$400k</option>
-		<option value = "500k">$500k</option>
-		<option value = "600k">$600k</option>
-		<option value = "700k">$700k</option>
-		<option value = "800k">$800k</option>
-		<option value = "900k">$900k</option>
+		<option value = "100000">$100k</option>
+		<option value = "200000">$200k</option>
+		<option value = "300000">$300k</option>
+		<option value = "400000">$400k</option>
+		<option value = "500000">$500k</option>
+		<option value = "600000">$600k</option>
+		<option value = "700000">$700k</option>
+		<option value = "800000">$800k</option>
+		<option value = "900000">$900k</option>
 	</select>
 	<select name = "selectBeds">
 		<option value = "defaultBeds">Any Beds</option>

@@ -8,11 +8,11 @@
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 body {
-    background-image: url("mycart.jpg");
+    background-image: url("image/mycart.jpg");
     color: black;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -73,9 +73,13 @@ $(document).ready(function(){
     <a href="sell.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Sell</a>
     <a href="rent.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Rent</a>
     <a href="news.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">News & Advice</a>
+    <a href="logout.php" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white w3-right">Logout</a>
     <a href="mycart.php" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white w3-right">Shopping Cart</a>
-     <a href="logout.php" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white w3-right">Logout</a>
-  </div>
+  <?php session_start() ; 
+     if($_SESSION['isAdmin']){
+      echo "<a href='admin.php' class='w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white w3-right'>Admin Actions</a>";
+     }?>			  
+	</div>
 </div>
 
 <?php
@@ -89,6 +93,10 @@ session_start();
 	$price = $_POST['selectPrice'];
 	$bed = $_POST['selectBeds'];
 	$bath = $_POST['selectBaths'];
+	$searchQuerywhole = $_POST['search'];
+	$test = explode(' ', $searchQuerywhole);
+	$searchQuery = $test[0];
+	echo $searchQuery;
 	$con=mysqli_connect($servername, $username,$password,$dbname);
 	if (!$con) 
 	{
@@ -96,17 +104,31 @@ session_start();
 	}
 
 
-	$sql = "Select * from house";
+	
+	$currentsql = "Select * from house where ((bed like '%".$searchQuery."%') OR zip = '".$searchQuery."') AND isdeleted = false";
 
-	if($price == 'defaultPrice' && $bed == 'defaultBeds' && $bath == 'defaultBaths'){
-		$result = mysqli_query($con, $sql);
-		if (mysqli_num_rows($result) > 0) 
+	if($price != 'defaultPrice'){
+		$price = (int)$price;
+		$currentsql = $currentsql. " AND cast(price as Unsigned) <= '$price'";
+	}
+
+	if($bed != 'defaultBeds'){
+		$currentsql = $currentsql. " AND bed ='".$bed."'";
+	}
+
+	if($bath != 'defaultBaths'){
+		$currentsql = $currentsql. " AND bath = '".$bath."'";
+	}
+
+	$result = mysqli_query($con,$currentsql);
+
+	if (mysqli_num_rows($result) > 0) 
 	{
 		// output data of each row
 		while($row = mysqli_fetch_assoc($result)) 
 		{	
 			
-			echo "<tr><td style = 'padding:5px'><img src = "
+			echo "<tr><td style = 'padding:5px'><img src = image/"
 			.$row["image"]." width = '200' height = '200'></td><td style = 'padding:25px'> 	 Beds: "
 			.$row["bed"]."bed</td><td style = 'padding:25px'>| 		Baths : "
 			.$row["bath"]."bath</td><td style = 'padding:25px'>| 	 Square Feet: "
@@ -120,10 +142,6 @@ session_start();
 
 		echo "0 results";
 	}
-
-
-	}
-
 
 	mysqli_close($con);
 
